@@ -56,3 +56,23 @@ sutui.remove_command 7
   1. `subscribe`
   2. `subscriptions`
   3. `update_command`
+
+## Middleware的集成
+本gem在SDK的实现上，提供Rack中间件的实现，理论上，开发者可以在基于Rack的应用程序中方便集成该中间件，具体的使用方法可以参照本gem中提供的[简单示例](lib/examples/config.fu)。
+开发者可以下载本代码，然后在项目根目录下执行以下示例命令运行示例程序（**注意**：记得替换API_KEY, API_SECRET以及CHANNEL_ID参数）：
+```sh
+API_KEY=your_api_key API_SECRET=your_api_secret CHANNEL_ID=1 rackup -Ilib examples/config.ru
+```
+
+### Ruby on Rails中使用
+```ruby
+# config/enviroments/production.rb
+config.middleware.use Sutui::Rack::ExceptionNotification, sutui: {
+  api_key: 'your_api_key_here',
+  api_secret: 'your_api_secret_here',
+  channel_id: 1    # change to your channel_id
+}
+```
+
+### 运行效果示例：<br>
+![微信端收到异常通知](examples/screenshot.png)
