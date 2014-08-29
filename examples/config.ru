@@ -1,4 +1,4 @@
-require File.expand_path('lib/sutui')
+require 'sutui'
 
 class Hello
   def initialize(app)
@@ -12,9 +12,9 @@ class Hello
 end
 
 use Sutui::Rack::ExceptionNotification, sutui: {
-  api_key: 'api_key_here',
-  api_secret: 'api_secret_here',
-  channel_id: 12
+  api_key: ENV['API_KEY'],
+  api_secret: ENV['API_SECRET'],
+  channel_id: ENV['CHANNEL_ID']
 }
 
 run Hello
