@@ -32,7 +32,7 @@ module Sutui
     end
 
     def unsubscribe(subscription_id)
-      response = rest_client.delete(signature_url("/subscription/#{sid}/"))
+      response = rest_client.delete(signature_url("/subscription/#{subscription_id}/"))
       process_response(response)
     end
 
