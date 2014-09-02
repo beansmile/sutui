@@ -1,5 +1,3 @@
-require 'pry'
-
 module Sutui
   module Rack
     class ExceptionNotification
